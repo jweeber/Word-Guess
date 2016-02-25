@@ -12,17 +12,15 @@ class NewGame
 	# method to start new game with randomly selected word
 	def initialize(word)
 		@word = word
-    @game_status == true
+    	@game_status = true
 	end
 
-def user_guess
-  puts "Guess a letter:"
-  guess = gets.chomp
-end
-
-while @game_status == true do
-  user_guess
-end
+	def user_guess
+		while @game_status == true do
+			puts "Guess a letter:"
+			guess = gets.chomp
+		end
+	end
 
 end
 
@@ -37,7 +35,7 @@ word = select_word
 
 game = NewGame.new(word)
 
-puts game.user_guess
+game.user_guess
 
 " ()
  (__)
