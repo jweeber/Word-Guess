@@ -15,11 +15,20 @@ class NewGame
     	@game_status = true
 	end
 
+
+
 	def user_guess
 		while @game_status == true do
+			draw_icecream
 			puts "Guess a letter:"
 			guess = gets.chomp
 		end
+	end
+
+	def draw_icecream
+		# array of ascii art representing icecream cone, line removed when player guesses wrong
+		icecream = ["     ()", "    (__)", "   (____)", "  (______)", " (________)", "(__________)", " X X X X X", "  X X X X ", "   X X X ", "    X X ", "     X"]
+		puts icecream
 	end
 
 end
@@ -37,14 +46,8 @@ game = NewGame.new(word)
 
 game.user_guess
 
-" ()
- (__)
-(____)
-(______)
-(________)
-(__________)
-\/\/\/\/\/
-\/\/\/\/
-\/\/\/
- \/\/
-  \/"
+
+
+
+
+
