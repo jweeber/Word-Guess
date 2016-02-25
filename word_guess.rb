@@ -1,5 +1,5 @@
 # method that has list of words and randomly selects one when player starts game
-# prints drawing with dashes for letters matching chosen word, tracks tries 
+# prints drawing with dashes for letters matching chosen word, tracks tries
 # take in user input - letter or word.
 # See if user input is included in out word
 # if it is correct, we print out screen a
@@ -12,7 +12,18 @@ class NewGame
 	# method to start new game with randomly selected word
 	def initialize(word)
 		@word = word
+    @game_status == true
 	end
+
+def user_guess
+  puts "Guess a letter:"
+  guess = gets.chomp
+end
+
+while @game_status == true do
+  user_guess
+end
+
 end
 
 
@@ -22,5 +33,20 @@ def select_word
 	word_array = ["mountain", "elephant", "hotdogs", "notebooks", "bicycle", "scaffolding"]
 	word = word_array.sample
 end
-select_word
+word = select_word
 
+game = NewGame.new(word)
+
+puts game.user_guess
+
+" ()
+ (__)
+(____)
+(______)
+(________)
+(__________)
+\/\/\/\/\/
+\/\/\/\/
+\/\/\/
+ \/\/
+  \/"
