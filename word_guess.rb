@@ -15,8 +15,6 @@ class NewGame
     	@game_status = true
 	end
 
-
-
 	def user_guess
 		while @game_status == true do
 			draw_icecream
@@ -31,6 +29,18 @@ class NewGame
 		puts icecream
 	end
 
+  def draw_guesses
+    # draws blank spaces or correct guesses under ice cream
+    letters = @word.split(//)
+    letter_hash = Hash.new
+    letters.each do |letter|
+      letter_hash[:letter] = "__"
+    end
+    puts letter_hash
+
+
+  end
+
 end
 
 
@@ -44,10 +54,6 @@ word = select_word
 
 game = NewGame.new(word)
 
-game.user_guess
+# game.user_guess
 
-
-
-
-
-
+game.draw_guesses
