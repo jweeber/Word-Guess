@@ -13,6 +13,7 @@ class NewGame
 	def initialize(word)
 		@word = word
     	@game_status = true
+    	@letter_array = []
 	end
 
 	def user_guess
@@ -28,19 +29,18 @@ class NewGame
 		icecream = ["     ()", "    (__)", "   (____)", "  (______)", " (________)", "(__________)", " X X X X X", "  X X X X ", "   X X X ", "    X X ", "     X"]
 		puts icecream
 	end
+ 	
 
   def draw_guesses
-    # draws blank spaces or correct guesses under ice cream
-    letters = @word.split(//)
-    letter_hash = Hash.new
-    letters.each do |letter|
-      letter_hash[:letter] = "__"
+    # split word and put letters in array
+    @word.split("").each do |letter|
+    	@letter_array.push(letter)
     end
-    puts letter_hash
-
+    # draws blank spaces or correct guesses under ice cream
+    word_length = @letter_array.length
+    puts "__ " * word_length 
 
   end
-
 end
 
 
