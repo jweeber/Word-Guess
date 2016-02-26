@@ -29,7 +29,10 @@ class NewGame
 	def guess_include(guess)
 		if @letter_array.include?(guess)
 			puts "It's a match!"
-			puts @letter_array.index(guess)
+			guess_index = @letter_array.index(guess)
+			@dashes.insert(guess_index, guess)
+			# FIND OUT HOW TO PUT DASHES 
+			puts "#{@dashes} "
 		else
 			puts "Not a match"
 		end
@@ -46,15 +49,17 @@ class NewGame
   	puts @word.length
   	# split word and put letters in array
     until @letter_array.length == @word.length
-      @word.split("").each do |letter|
+      	@word.split("").each do |letter|
     	@letter_array.push(letter)
       end
+    	word_length = @letter_array.length
+    	@dashes = "__ " * word_length
+    	puts @dashes
     end
     # draws blank spaces or correct guesses under ice cream
-    word_length = @letter_array.length
-    puts "__ " * word_length
-    puts @letter_array
-    puts @letter_array.length
+
+    #puts @letter_array
+    #puts @letter_array.length
   end
 
 
