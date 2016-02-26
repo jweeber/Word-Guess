@@ -11,12 +11,13 @@
 class NewGame
 	# method to start new game with randomly selected word
 	def initialize(word)
-		@word = word
+			@word = word
     	@game_status = true
     	@letter_array = []
     	@dashes_array = []
 			@incorrect_guesses = 0
 			@icecream = ["     ()", "    (__)", "   (____)", "  (______)", " (________)", "(__________)", " X X X X X", "  X X X X ", "   X X X ", "    X X ", "     X"]
+			user_guess
 	end
 
 	def user_guess
@@ -35,9 +36,7 @@ class NewGame
 			puts "It's a match!"
 			guess_index = @letter_array.index(guess)
 			@dashes_array[guess_index] = guess
-			@dashes_array.each do |dash|
-    			print dash
-    		end
+				user_guess
 		else
 			puts "Not a match"
 			@incorrect_guesses += 1
@@ -47,8 +46,7 @@ class NewGame
 					exit
 				end
 		end
-		draw_icecream
-		draw_guesses
+		user_guess
 	end
 
 	def draw_icecream
@@ -68,11 +66,11 @@ class NewGame
     	word_length.times do
     		@dashes_array.push("__ ")
     	end
-    	@dashes_array.each do |dash|
-    		print dash
-    	end
     	#puts @dashes_array
     end
+		@dashes_array.each do |dash|
+			print dash
+		end
     # draws blank spaces or correct guesses under ice cream
 
     #puts @letter_array
@@ -92,4 +90,4 @@ end
 
 word = select_word
 game = NewGame.new(word)
-game.user_guess
+# game.user_guess
