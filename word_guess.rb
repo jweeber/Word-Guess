@@ -1,12 +1,3 @@
-# method that has list of words and randomly selects one when player starts game
-# prints drawing with dashes for letters matching chosen word, tracks tries
-# take in user input - letter or word.
-# See if user input is included in out word
-# if it is correct, we print out screen a
-# if not correct, print out screen b
-
-
-
 
 class NewGame
 	# method to start new game with randomly selected word
@@ -27,7 +18,6 @@ class NewGame
 			puts "\nGuess a letter:"
 			guess = gets.chomp
 			guess_include(guess)
-			puts @word
 		end
 	end
 
@@ -39,8 +29,8 @@ class NewGame
 
 			# if the guess is the whole word, win and exit
 			if guess == @word
-				puts "You win! Enjoy your ice cream!"
 				puts @word
+				puts "You win! Enjoy your ice cream!"
 				exit
 			end
 
@@ -53,8 +43,6 @@ class NewGame
 			else
 				temp_index = []
 				@letter_array.each_with_index { |letter, index| temp_index << index if @letter_array[index] == guess }
-
-				#puts temp_index
 
 				temp_index.each do |index|
 					#guess_index = @letter_array[index]
@@ -100,7 +88,7 @@ class NewGame
       end
     	word_length = @letter_array.length
     	word_length.times do
-    		@dashes_array.push("__ ")
+    		@dashes_array.push("_ ")
     	end
     	#puts @dashes_array
     end
