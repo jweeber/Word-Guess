@@ -23,13 +23,13 @@ class NewGame
 			puts "Guess a letter:"
 			guess = gets.chomp
 			guess_include(guess)
-			puts @word
 		end
 	end
 
 	def guess_include(guess)
 		if @letter_array.include?(guess)
 			puts "It's a match!"
+			puts @letter_array.index(guess)
 		else
 			puts "Not a match"
 		end
@@ -43,8 +43,9 @@ class NewGame
 
 
   def draw_guesses
-    while @letter_array.length <= @word.length
-    # split word and put letters in array
+  	puts @word.length
+  	# split word and put letters in array
+    until @letter_array.length == @word.length
       @word.split("").each do |letter|
     	@letter_array.push(letter)
       end
@@ -52,6 +53,7 @@ class NewGame
     # draws blank spaces or correct guesses under ice cream
     word_length = @letter_array.length
     puts "__ " * word_length
+    puts @letter_array
     puts @letter_array.length
   end
 
@@ -65,10 +67,7 @@ def select_word
 	word_array = ["mountain", "elephant", "hotdogs", "notebooks", "bicycle", "scaffolding"]
 	word = word_array.sample
 end
+
 word = select_word
-
 game = NewGame.new(word)
-
 game.user_guess
-
-# game.draw_guesses
