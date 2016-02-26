@@ -35,6 +35,7 @@ class NewGame
 		if @letter_array.include?(guess) || guess == @word
 			if guess == @word
 				puts "You win! Enjoy your ice cream!"
+				puts @word
 				exit
 			end
 
@@ -44,6 +45,7 @@ class NewGame
 
 			if @dashes_array == @letter_array
 				puts "You win! Enjoy your ice cream!"
+				puts @word
 				exit
 			end
 			user_guess
