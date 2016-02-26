@@ -51,9 +51,10 @@ class NewGame
 
 			# iterate through letters and if letter == guess, replace correct dash with guess		
 			else
+				
+				@letter_array.each_with_index { |guess, index| temp_index << index if @letter_array[index] == guess }
 
-				temp_indexes = @letter_array.each_with_index { |guess, index| @letter_array[index] == guess }
-				puts temp_indexes
+				puts temp_index
 
 
 
