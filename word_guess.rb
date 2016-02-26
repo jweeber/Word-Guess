@@ -32,6 +32,10 @@ class NewGame
 	end
 
 	def guess_include(guess)
+		if
+
+		end
+
 		if @letter_array.include?(guess) || guess == @word
 			if guess == @word
 				puts "You win! Enjoy your ice cream!"
@@ -39,7 +43,7 @@ class NewGame
 				exit
 			end
 
-			puts "It's a match!"
+			@letter_array.each_index do
 			guess_index = @letter_array.index(guess)
 			@dashes_array[guess_index] = guess
 
@@ -49,7 +53,9 @@ class NewGame
 				exit
 			end
 			user_guess
-		else
+		end
+
+		if @letter_array.include?(guess) == false
 			puts "Not a match"
 			@incorrect_guesses += 1
 			@icecream.shift
