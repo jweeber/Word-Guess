@@ -32,29 +32,57 @@ class NewGame
 	end
 
 	def guess_include(guess)
-		if
-
-		end
-
+	
+		# if one or more occurances of guess is in word or guess is whole word
 		if @letter_array.include?(guess) || guess == @word
+			puts "It's a match!"
+
+			# if the guess is the whole word, win and exit
 			if guess == @word
 				puts "You win! Enjoy your ice cream!"
 				puts @word
 				exit
 			end
 
-			@letter_array.each_index do
-			guess_index = @letter_array.index(guess)
-			@dashes_array[guess_index] = guess
+			# if there is only one occurance of guess in letters_array
+			if @letter_array.count(guess) == 1
+					guess_index = @letter_array.index(guess)
+					@dashes_array[guess_index] = guess
 
+			# iterate through letters and if letter == guess, replace correct dash with guess		
+			else
+
+				temp_indexes = @letter_array.each_with_index { |guess, index| @letter_array[index] == guess }
+				puts temp_indexes
+
+
+
+
+						# guess_index = @letter_array.index(guess)
+						# @dashes_array[guess_index] = guess
+
+
+						# puts "guess: #{guess}"
+						# puts "guess_index: #{guess_index}"
+						# puts "dashes: #{@dashes_array}"
+						# puts "letter array: #{@letter_array}"
+
+					#end
+				#end	
+
+			end		
+
+			# if the updated dash array is the whole word, win, exit
 			if @dashes_array == @letter_array
 				puts "You win! Enjoy your ice cream!"
 				puts @word
 				exit
 			end
+			# reprompt the user for another letter
 			user_guess
 		end
 
+		# if the letter is not in the array, lose round
 		if @letter_array.include?(guess) == false
 			puts "Not a match"
 			@incorrect_guesses += 1
@@ -63,8 +91,8 @@ class NewGame
 					puts "No more guesses! You lose."
 					exit
 				end
+			user_guess
 		end
-		user_guess
 	end
 
 	def draw_icecream
