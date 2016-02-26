@@ -11,18 +11,18 @@
 class NewGame
 	# method to start new game with randomly selected word
 	def initialize(word)
-			@word = word
+		@word = word
     	@game_status = true
     	@letter_array = []
     	@dashes_array = []
-			@incorrect_guesses = 0
-			@icecream = ["     ()", "    (__)", "   (____)", "  (______)", " (________)", "(__________)", " X X X X X", "  X X X X ", "   X X X ", "    X X ", "     X"]
-			user_guess
+		@incorrect_guesses = 0
+		@icecream = ["     ()", "    (__)", "   (____)", "  (______)", " (________)", "(__________)", " X X X X X", "  X X X X ", "   X X X ", "    X X ", "     X"]
+		user_guess
 	end
 
 	def user_guess
 		while @game_status == true do
-					draw_icecream
+			draw_icecream
       		draw_guesses
 			puts "\nGuess a letter:"
 			guess = gets.chomp
@@ -32,11 +32,21 @@ class NewGame
 	end
 
 	def guess_include(guess)
-		if @letter_array.include?(guess)
+		if @letter_array.include?(guess) || guess == @word
+			if guess == @word
+				puts "You win! Enjoy your ice cream!"
+				exit
+			end
+
 			puts "It's a match!"
 			guess_index = @letter_array.index(guess)
 			@dashes_array[guess_index] = guess
-				user_guess
+
+			if @dashes_array == @letter_array
+				puts "You win! Enjoy your ice cream!"
+				exit
+			end
+			user_guess
 		else
 			puts "Not a match"
 			@incorrect_guesses += 1
@@ -84,7 +94,7 @@ end
 
 # method to randomly select a word
 def select_word
-	word_array = ["mountain", "elephant", "hotdogs", "notebooks", "bicycle", "scaffolding"]
+	word_array = ["dog", "mountain", "elephant", "hotdogs", "notebooks", "bicycle", "scaffolding"]
 	word = word_array.sample
 end
 
