@@ -14,15 +14,17 @@ class NewGame
 		@word = word
     	@game_status = true
     	@letter_array = []
+    	@dashes_array = []
 	end
 
 	def user_guess
 		while @game_status == true do
 			draw_icecream
       		draw_guesses
-			puts "Guess a letter:"
+			puts "\nGuess a letter:"
 			guess = gets.chomp
 			guess_include(guess)
+			puts @word 
 		end
 	end
 
@@ -30,9 +32,10 @@ class NewGame
 		if @letter_array.include?(guess)
 			puts "It's a match!"
 			guess_index = @letter_array.index(guess)
-			@dashes.insert(guess_index, guess)
-			# FIND OUT HOW TO PUT DASHES 
-			puts "#{@dashes} "
+			@dashes_array[guess_index] = guess
+			@dashes_array.each do |dash|
+    			print dash
+    		end
 		else
 			puts "Not a match"
 		end
@@ -53,8 +56,13 @@ class NewGame
     	@letter_array.push(letter)
       end
     	word_length = @letter_array.length
-    	@dashes = "__ " * word_length
-    	puts @dashes
+    	word_length.times do 
+    		@dashes_array.push("__ ")
+    	end
+    	@dashes_array.each do |dash|
+    		print dash
+    	end
+    	#puts @dashes_array
     end
     # draws blank spaces or correct guesses under ice cream
 
@@ -76,3 +84,6 @@ end
 word = select_word
 game = NewGame.new(word)
 game.user_guess
+
+
+
