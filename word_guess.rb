@@ -19,9 +19,19 @@ class NewGame
 	def user_guess
 		while @game_status == true do
 			draw_icecream
-      draw_guesses
+      		draw_guesses
 			puts "Guess a letter:"
 			guess = gets.chomp
+			guess_include(guess)
+			puts @word
+		end
+	end
+
+	def guess_include(guess)
+		if @letter_array.include?(guess)
+			puts "It's a match!"
+		else
+			puts "Not a match"
 		end
 	end
 
