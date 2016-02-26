@@ -19,6 +19,7 @@ class NewGame
 	def user_guess
 		while @game_status == true do
 			draw_icecream
+      draw_guesses
 			puts "Guess a letter:"
 			guess = gets.chomp
 		end
@@ -29,18 +30,22 @@ class NewGame
 		icecream = ["     ()", "    (__)", "   (____)", "  (______)", " (________)", "(__________)", " X X X X X", "  X X X X ", "   X X X ", "    X X ", "     X"]
 		puts icecream
 	end
- 	
+
 
   def draw_guesses
+    while @letter_array.length <= @word.length
     # split word and put letters in array
-    @word.split("").each do |letter|
+      @word.split("").each do |letter|
     	@letter_array.push(letter)
+      end
     end
     # draws blank spaces or correct guesses under ice cream
     word_length = @letter_array.length
-    puts "__ " * word_length 
-
+    puts "__ " * word_length
+    puts @letter_array.length
   end
+
+
 end
 
 
@@ -54,6 +59,6 @@ word = select_word
 
 game = NewGame.new(word)
 
-# game.user_guess
+game.user_guess
 
-game.draw_guesses
+# game.draw_guesses
