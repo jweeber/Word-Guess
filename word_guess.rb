@@ -17,11 +17,16 @@ class NewGame
 	def user_guess
 		while @game_status == true do
 			draw_icecream
-      		draw_guesses
+      draw_guesses
 			puts "\nGuess a letter:"
-			guess = gets.chomp
+			guess = gets.chomp.downcase
+			# make sure user enters letter a-z
+				until guess.match(/[a-zA-Z]/)
+					puts "Please guess a letter from a-z:"
+					guess = gets.chomp.downcase
+				end
 			if @already_guessed.include? guess
-				puts "You already guess that letter, try another!".colorize(:red)
+				puts "You already guess that letter, try another!".colorize(:cyan)
 				puts "\nGuess a letter:".colorize(:cyan)
 				guess = gets.chomp
 			end
@@ -87,9 +92,9 @@ class NewGame
 		# array of ascii art representing icecream cone, line removed when player guesses wrong
 		puts @icecream
 		# print out letters you already guessed
-		puts "You have already guessed:"
+		puts "You have already guessed:".colorize(:magenta)
 		@already_guessed.each do |letter|
-			print letter
+			print letter.colorize(:magenta)
 		end
 		puts "\n"
 	end
