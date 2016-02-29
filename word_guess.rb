@@ -21,11 +21,12 @@ class NewGame
 			puts "\nGuess a letter:"
 			guess = gets.chomp.downcase
 			# make sure user enters letter a-z
-				until guess.match(/[a-zA-Z]/)
-					puts "Please guess a letter from a-z:"
-					guess = gets.chomp.downcase
-				end
-			if @already_guessed.include? guess
+			until guess.match(/[a-zA-Z]/)
+				puts "Please guess a letter from a-z:"
+				guess = gets.chomp.downcase
+			end
+			# if already guess letter, reprompt and don't lose round
+			while @already_guessed.include? guess
 				puts "You already guess that letter, try another!".colorize(:cyan)
 				puts "\nGuess a letter:".colorize(:cyan)
 				guess = gets.chomp
