@@ -7,6 +7,7 @@ class NewGame
     	@letter_array = []
     	@dashes_array = []
 		@incorrect_guesses = 0
+		@already_guessed = []
 		@icecream = ["     ()", "    (__)", "   (____)", "  (______)", " (________)", "(__________)", " X X X X X", "  X X X X ", "   X X X ", "    X X ", "     X"]
 		user_guess
 	end
@@ -17,7 +18,9 @@ class NewGame
       		draw_guesses
 			puts "\nGuess a letter:"
 			guess = gets.chomp
+			@already_guessed.push(guess)
 			guess_include(guess)
+
 		end
 	end
 
@@ -76,11 +79,16 @@ class NewGame
 	def draw_icecream
 		# array of ascii art representing icecream cone, line removed when player guesses wrong
 		puts @icecream
+		# print out letters you already guessed
+		puts "You have already guessed:"
+		@already_guessed.each do |letter|
+			print letter 
+		end
+		puts "\n"
 	end
 
 
   def draw_guesses
-  	puts @word.length
   	# split word and put letters in array
     until @letter_array.length == @word.length
       	@word.split("").each do |letter|
@@ -90,7 +98,6 @@ class NewGame
     	word_length.times do
     		@dashes_array.push("_ ")
     	end
-    	#puts @dashes_array
     end
 		@dashes_array.each do |dash|
 			print dash
