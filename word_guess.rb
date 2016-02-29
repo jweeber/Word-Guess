@@ -27,7 +27,7 @@ class NewGame
 			end
 			# if already guess letter, reprompt and don't lose round
 			while @already_guessed.include? guess
-				puts "You already guess that letter, try another!".colorize(:cyan)
+				puts "You already guessed that letter, try another!".colorize(:cyan)
 				puts "\nGuess a letter:".colorize(:cyan)
 				guess = gets.chomp
 			end
