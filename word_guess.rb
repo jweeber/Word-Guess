@@ -17,7 +17,7 @@ class NewGame
 	def user_guess
 		while @game_status == true do
 			draw_icecream
-      draw_guesses
+        	draw_guesses
 			puts "\nGuess a letter:"
 			guess = gets.chomp.downcase
 			# make sure user enters letter a-z
