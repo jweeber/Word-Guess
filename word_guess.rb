@@ -1,4 +1,6 @@
 
+require 'colorize'
+
 class NewGame
 	# method to start new game with randomly selected word
 	def initialize(word)
@@ -8,7 +10,7 @@ class NewGame
     	@dashes_array = []
 		@incorrect_guesses = 0
 		@already_guessed = []
-		@icecream = ["     ()", "    (__)", "   (____)", "  (______)", " (________)", "(__________)", " X X X X X", "  X X X X ", "   X X X ", "    X X ", "     X"]
+		@icecream = ["     ()".colorize(:magenta), "    (__)".colorize(:yellow), "   (____)".colorize(:green), "  (______)".colorize(:cyan), " (________)".colorize(:light_blue), "(__________)".colorize(:red), " X X X X X".colorize(:yellow), "  X X X X ".colorize(:yellow), "   X X X ".colorize(:yellow), "    X X ".colorize(:yellow), "     X".colorize(:yellow)]
 		user_guess
 	end
 
@@ -25,7 +27,7 @@ class NewGame
 	end
 
 	def guess_include(guess)
-	
+
 		# if one or more occurances of guess is in word or guess is whole word
 		if @letter_array.include?(guess) || guess == @word
 			puts "It's a match!"
@@ -42,7 +44,7 @@ class NewGame
 					guess_index = @letter_array.index(guess)
 					@dashes_array[guess_index] = guess
 
-			# iterate through letters and if letter == guess, replace correct dash with guess		
+			# iterate through letters and if letter == guess, replace correct dash with guess
 			else
 				temp_index = []
 				@letter_array.each_with_index { |letter, index| temp_index << index if @letter_array[index] == guess }
@@ -51,7 +53,7 @@ class NewGame
 					#guess_index = @letter_array[index]
 					@dashes_array[index] = guess
 				end
-			end		
+			end
 
 			# if the updated dash array is the whole word, win, exit
 			if @dashes_array == @letter_array
@@ -82,7 +84,7 @@ class NewGame
 		# print out letters you already guessed
 		puts "You have already guessed:"
 		@already_guessed.each do |letter|
-			print letter 
+			print letter
 		end
 		puts "\n"
 	end
@@ -103,9 +105,6 @@ class NewGame
 			print dash
 		end
     # draws blank spaces or correct guesses under ice cream
-
-    #puts @letter_array
-    #puts @letter_array.length
   end
 
 
