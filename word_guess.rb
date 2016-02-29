@@ -123,11 +123,20 @@ end
 
 
 # method to randomly select a word
-def select_word
-	word_array = ["dog", "mountain", "elephant", "hotdogs", "notebooks", "bicycle", "scaffolding"]
+puts "What level are you? Low/Medium/High"
+level = gets.chomp.downcase
+
+def select_word(level)
+	if level == "low"
+		word_array = ["dog", "cat", "car", "pen", "mouse", "chair"]
+	elsif level == "medium"
+		word_array = ["mountain", "elephant", "hotdogs", "notebooks", "bicycle", "scaffolding"]
+	else 
+		word_array = ["exclamation", "functionality", "representation", "visual", "terminal", "adamant"]
+	end
 	word = word_array.sample
 end
 
-word = select_word
+word = select_word(level)
 game = NewGame.new(word)
 # game.user_guess
