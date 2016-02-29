@@ -20,6 +20,11 @@ class NewGame
       		draw_guesses
 			puts "\nGuess a letter:"
 			guess = gets.chomp
+			if @already_guessed.include? guess
+				puts "You already guess that letter, try another!".colorize(:red)
+				puts "\nGuess a letter:".colorize(:cyan)
+				guess = gets.chomp
+			end
 			@already_guessed.push(guess)
 			guess_include(guess)
 
@@ -30,7 +35,7 @@ class NewGame
 
 		# if one or more occurances of guess is in word or guess is whole word
 		if @letter_array.include?(guess) || guess == @word
-			puts "It's a match!"
+			#puts "It's a match!"
 
 			# if the guess is the whole word, win and exit
 			if guess == @word
@@ -67,7 +72,7 @@ class NewGame
 
 		# if the letter is not in the array, lose round
 		if @letter_array.include?(guess) == false
-			puts "Not a match"
+			#puts "Not a match"
 			@incorrect_guesses += 1
 			@icecream.shift
 				if @incorrect_guesses == 6
